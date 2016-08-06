@@ -1,0 +1,52 @@
+buildscript {
+	repositories {
+		jcenter()
+		maven {
+			name "forge"
+			url "http://files.minecraftforge.net/maven/"
+		}
+	}
+	dependencies {
+		classpath "net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT"
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+	}
+}
+
+apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: "kotlin"
+
+version = mod_version
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+minecraft {
+	version = mc_version + "-" + forge_version
+	runDir = "run"
+
+	mappings = mcp_mappings
+}
+
+processResources {
+	inputs.property "version", project.version
+	inputs.property "mcversion", project.minecraft.version
+
+	from (sourceSets.main.resources.srcDirs) {
+		include "mcmod.info"
+		expand "version": project.version, "mcversion": mc_version
+	}
+	from (sourceSets.main.resources.srcDirs) {
+		exclude "mcmod.info"
+	}
+}
+
+repositories {
+	maven {
+		name "shadowfacts"
+		url "http://mvn.rx14.co.uk/shadowfacts/"
+	}
+}
+
+dependencies {
+	deobfCompile group: "net.shadowfacts", name: "Forgelin", version: forgelin_version
+}
