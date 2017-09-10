@@ -41,10 +41,8 @@ processResources {
 }
 
 repositories {
-	maven {
-		name "shadowfacts"
-		url "http://mvn.rx14.co.uk/shadowfacts/"
-	}
+	jcenter()
+	maven { url "http://maven.shadowfacts.net/" }
 }
 
 dependencies {
