@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 /**
  * @author shadowfacts
  */
-@Mod(modid = "ForgelinExample", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
+@Mod(modid = "forgelinexample", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
 object ForgelinExample {
 
 	@Mod.EventHandler
